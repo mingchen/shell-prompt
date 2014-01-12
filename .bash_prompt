@@ -37,5 +37,5 @@ __git_head()
 # (django_env)MacBook-Air:~/Projects/Foo/src (master)
 # $
 #
-PS1="\n\$(__virtualenv_name)\h:\w \$(__git_head)\n$ "
+PS1="\n╭─\$(__virtualenv_name)\u@\h:\w \$(__git_head)\n╰─\$ "
 
