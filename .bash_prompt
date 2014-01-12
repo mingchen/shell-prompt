@@ -1,0 +1,25 @@
+# Get the virtualenv name, if available.
+__virtualenv_name()
+{
+    if [ -n "$VIRTUAL_ENV" ]; then
+        printf "(%s)" $(basename $VIRTUAL_ENV)
+    fi
+}
+
+# Get the git head name, if available.
+__git_head() 
+{ 
+    local b="$(git symbolic-ref HEAD 2>/dev/null)";
+    if [ -n "$b" ]; then
+        printf "(%s)" "${b##refs/heads/}";
+    fi
+}
+
+#
+# Example of set PS1. It looks like:
+#
+# (django_env)MacBook-Air:~/Projects/Foo/src (master)
+# $
+#
+PS1="\n\$(__virtualenv_name)\h:\w \$(__git_head)\n$ "
+
