@@ -22,6 +22,14 @@ __virtualenv_name()
     fi
 }
 
+# Get rvm name
+__rvm_current()
+{
+    if [ -n "$rvm_path" ]; then
+        printf "(%s)" $(rvm current)
+    fi
+}
+
 # Get the git head name, if available.
 __git_head() 
 { 
@@ -37,5 +45,5 @@ __git_head()
 # (django_env)MacBook-Air:~/Projects/Foo/src (master)
 # $
 #
-PS1="\n╭─\$(__virtualenv_name)\u@\h:\w \$(__git_head)\n╰─\$ "
+PS1="\n╭─\$(__virtualenv_name)\$(__rvm_current)\u@\h:\w \$(__git_head)\n╰─\$ "
 
